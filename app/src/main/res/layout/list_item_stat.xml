@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatLabelHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:text="@string/label_stat_hp"
+        android:textColor="@color/color_type_water"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatValueHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.078"
+        android:text="@string/label_stat_zero"
+        android:textColor="@color/color_text_list_primary"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelHP"
+        app:layout_constraintEnd_toStartOf="@id/progressHP"
+        app:layout_constraintStart_toEndOf="@id/barrierLabel"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelHP" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressHP"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:max="255"
+        app:indicatorColor="@color/color_type_water"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelHP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvStatValueHP"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelHP"
+        app:trackColor="@color/color_progress_track"
+        app:trackCornerRadius="4dp"
+        app:trackThickness="@dimen/dimen_8dp"
+        tools:progress="60" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatLabelATK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:text="@string/label_stat_atk"
+        android:textColor="@color/color_type_water"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatLabelHP" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatValueATK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.078"
+        android:text="@string/label_stat_zero"
+        android:textColor="@color/color_text_list_primary"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelATK"
+        app:layout_constraintEnd_toStartOf="@id/progressATK"
+        app:layout_constraintStart_toEndOf="@id/barrierLabel"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelATK" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressATK"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:max="255"
+        app:indicatorColor="@color/color_type_water"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelATK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvStatValueATK"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelATK"
+        app:trackColor="@color/color_progress_track"
+        app:trackCornerRadius="4dp"
+        app:trackThickness="@dimen/dimen_8dp"
+        tools:progress="70" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatLabelDEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:text="@string/label_stat_def"
+        android:textColor="@color/color_type_water"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatLabelATK" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatValueDEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.078"
+        android:text="@string/label_stat_zero"
+        android:textColor="@color/color_text_list_primary"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelDEF"
+        app:layout_constraintEnd_toStartOf="@id/progressDEF"
+        app:layout_constraintStart_toEndOf="@id/barrierLabel"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelDEF" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressDEF"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:max="255"
+        app:indicatorColor="@color/color_type_water"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelDEF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvStatValueDEF"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelDEF"
+        app:trackColor="@color/color_progress_track"
+        app:trackCornerRadius="4dp"
+        app:trackThickness="@dimen/dimen_8dp"
+        tools:progress="30" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatLabelSATK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:text="@string/label_stat_satk"
+        android:textColor="@color/color_type_water"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatLabelDEF" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatValueSATK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.078"
+        android:text="@string/label_stat_zero"
+        android:textColor="@color/color_text_list_primary"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelSATK"
+        app:layout_constraintEnd_toStartOf="@id/progressSATK"
+        app:layout_constraintStart_toEndOf="@id/barrierLabel"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelSATK" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressSATK"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:max="255"
+        app:indicatorColor="@color/color_type_water"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelSATK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvStatValueSATK"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelSATK"
+        app:trackColor="@color/color_progress_track"
+        app:trackCornerRadius="4dp"
+        app:trackThickness="@dimen/dimen_8dp"
+        tools:progress="100" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatLabelSDEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:text="@string/label_stat_sdef"
+        android:textColor="@color/color_type_water"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatLabelSATK" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatValueSDEF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.078"
+        android:text="@string/label_stat_zero"
+        android:textColor="@color/color_text_list_primary"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelSDEF"
+        app:layout_constraintEnd_toStartOf="@id/progressSDEF"
+        app:layout_constraintStart_toEndOf="@id/barrierLabel"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelSDEF" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressSDEF"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:max="255"
+        app:indicatorColor="@color/color_type_water"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelSDEF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvStatValueSDEF"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelSDEF"
+        app:trackColor="@color/color_progress_track"
+        app:trackCornerRadius="4dp"
+        app:trackThickness="@dimen/dimen_8dp"
+        tools:progress="50" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatLabelSPD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:text="@string/label_stat_spd"
+        android:textColor="@color/color_type_water"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatLabelSDEF" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatValueSPD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.078"
+        android:text="@string/label_stat_zero"
+        android:textColor="@color/color_text_list_primary"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelSPD"
+        app:layout_constraintEnd_toStartOf="@id/progressSPD"
+        app:layout_constraintStart_toEndOf="@id/barrierLabel"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelSPD" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressSPD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:max="255"
+        app:indicatorColor="@color/color_type_water"
+        app:layout_constraintBottom_toBottomOf="@id/tvStatLabelSPD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvStatValueSPD"
+        app:layout_constraintTop_toTopOf="@id/tvStatLabelSPD"
+        app:trackColor="@color/color_progress_track"
+        app:trackCornerRadius="4dp"
+        app:trackThickness="@dimen/dimen_8dp"
+        tools:progress="50" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="tvStatLabelHP,tvStatLabelATK,tvStatLabelDEF,tvStatLabelSATK,tvStatLabelSDEF,tvStatLabelSPD" />
+</androidx.constraintlayout.widget.ConstraintLayout>

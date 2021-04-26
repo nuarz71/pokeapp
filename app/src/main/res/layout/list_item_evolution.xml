@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivFrom"
+        android:layout_width="@dimen/list_item_pokemon_image_size"
+        android:layout_height="@dimen/list_item_pokemon_image_size"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <View
+        android:id="@+id/viewArrowBody"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:background="#DCDCDC"
+        app:layout_constraintBottom_toBottomOf="@id/ivFrom"
+        app:layout_constraintEnd_toStartOf="@id/ivTo"
+        app:layout_constraintStart_toEndOf="@id/ivFrom"
+        app:layout_constraintTop_toTopOf="@id/ivFrom"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:scaleX="-1"
+        android:src="@drawable/ic_arrow_back_ios"
+        app:layout_constraintBottom_toBottomOf="@id/ivFrom"
+        app:layout_constraintEnd_toEndOf="@id/viewArrowBody"
+        app:layout_constraintTop_toTopOf="@id/ivFrom"
+        app:tint="#DCDCDC" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTo"
+        android:layout_width="@dimen/list_item_pokemon_image_size"
+        android:layout_height="@dimen/list_item_pokemon_image_size"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivFrom"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTrigger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        android:textAppearance="@style/App.TextAppearance.Subtitle"
+        app:layout_constraintBottom_toTopOf="@id/viewArrowBody"
+        app:layout_constraintEnd_toStartOf="@id/ivTo"
+        app:layout_constraintStart_toEndOf="@id/ivFrom"
+        tools:text="@tools:sample/full_names" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNameFrom"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:textAppearance="@style/App.TextAppearance.Overview"
+        app:layout_constraintEnd_toEndOf="@id/ivFrom"
+        app:layout_constraintStart_toStartOf="@id/ivFrom"
+        app:layout_constraintTop_toBottomOf="@id/ivFrom"
+        tools:text="@tools:sample/full_names" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNameTo"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:textAppearance="@style/App.TextAppearance.Overview"
+        app:layout_constraintEnd_toEndOf="@id/ivTo"
+        app:layout_constraintStart_toStartOf="@id/ivTo"
+        app:layout_constraintTop_toBottomOf="@id/ivTo"
+        tools:text="@tools:sample/full_names" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvNameFrom,tvNameTo" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.75dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:background="@drawable/shape_item_divider"
+        app:layout_constraintEnd_toEndOf="@id/ivTo"
+        app:layout_constraintStart_toStartOf="@id/ivFrom"
+        app:layout_constraintTop_toBottomOf="@id/barrierName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

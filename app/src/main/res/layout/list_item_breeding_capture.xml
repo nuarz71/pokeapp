@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dimen_16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:textAppearance="@style/App.TextAppearance.SectionTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/full_names" />
+
+    <View
+        android:id="@+id/verticalDivider1"
+        android:layout_width="0.75dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_item_divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvSubtitle1"
+        app:layout_constraintStart_toStartOf="@id/tvSubtitle2"
+        app:layout_constraintTop_toTopOf="@id/tvSubtitle1" />
+
+    <View
+        android:id="@+id/verticalDivider2"
+        android:layout_width="0.75dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_item_divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvSubtitle2"
+        app:layout_constraintStart_toStartOf="@id/tvSubtitle3"
+        app:layout_constraintTop_toTopOf="@id/verticalDivider1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubtitle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:gravity="center"
+        android:textAppearance="@style/App.TextAppearance.Subtitle"
+        app:layout_constraintEnd_toStartOf="@id/tvSubtitle2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:text="@string/subtitle_breeding_eeg_group" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubtitle2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="@style/App.TextAppearance.Subtitle"
+        app:layout_constraintEnd_toStartOf="@id/tvSubtitle3"
+        app:layout_constraintStart_toEndOf="@id/tvSubtitle1"
+        app:layout_constraintTop_toTopOf="@id/tvSubtitle1"
+        tools:text="@string/subtitle_breeding_hatch_time" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubtitle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="@style/App.TextAppearance.Subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvSubtitle2"
+        app:layout_constraintTop_toTopOf="@id/tvSubtitle1"
+        tools:text="@string/subtitle_breeding_gender" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOverview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.5"
+        android:textAppearance="@style/App.TextAppearance.Overview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvSubtitle1"
+        app:layout_constraintStart_toStartOf="@id/tvSubtitle1"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle1"
+        tools:text="Monster\nWater 1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOverview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.5"
+        android:textAppearance="@style/App.TextAppearance.Overview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvSubtitle2"
+        app:layout_constraintStart_toStartOf="@id/tvSubtitle2"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle2"
+        tools:text="5101 Steps\n20 Cycles" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOverview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_8dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.5"
+        android:textAppearance="@style/App.TextAppearance.Overview"
+        app:layout_constraintBottom_toBottomOf="@id/progress3"
+        app:layout_constraintEnd_toStartOf="@id/progress3"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/verticalDivider2"
+        app:layout_constraintTop_toTopOf="@id/progress3"
+        tools:text="20%\n80%" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:max="100"
+        app:indicatorColor="@color/color_type_fighting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvOverview3"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle3"
+        app:trackColor="@color/color_type_dragon"
+        app:trackCornerRadius="4dp"
+        tools:progress="20" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivProgressIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_gender"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/progress3"
+        app:layout_constraintEnd_toEndOf="@id/progress3"
+        app:layout_constraintStart_toStartOf="@id/progress3"
+        app:layout_constraintTop_toTopOf="@id/progress3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

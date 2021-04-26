@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constrainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient"
+    android:paddingTop="26dp"
+    android:fitsSystemWindows="true"
+    android:transitionName="container_transform"
+    app:layoutDescription="@xml/fragment_detail_scene">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnClose"
+        style="?attr/actionButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_down"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/detail_guideline_top_begin" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/detail_guideline_avatar_begin" />
+
+    <View
+        android:id="@+id/viewTopRounded"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_top_rounded_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="@dimen/image_size_avatar_detail"
+        android:layout_height="@dimen/image_size_avatar_detail"
+        android:transitionName="@string/transition_name_avatar"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_24dp"
+        android:textAppearance="@style/App.TextAppearance.ExtraLarge"
+        android:transitionName="@string/transition_name_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineAvatar"
+        tools:text="@tools:sample/full_names" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnElement1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:elevation="2dp"
+        android:enabled="false"
+        android:fontFamily="sans-serif"
+        android:paddingStart="@dimen/dimen_16dp"
+        android:paddingEnd="@dimen/dimen_24dp"
+        android:stateListAnimator="@null"
+        android:textColor="@color/white"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:translationZ="6dp"
+        app:backgroundTint="@color/color_type_water"
+        app:cornerRadius="22dp"
+        app:iconPadding="@dimen/dimen_16dp"
+        app:iconSize="16dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:icon="@drawable/ic_type_water"
+        tools:ignore="SpUsage"
+        tools:text="water" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOverview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.3"
+        android:textAppearance="@style/App.TextAppearance.Overview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnElement1"
+        tools:maxLines="5"
+        tools:text="@tools:sample/lorem/random" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStat"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="@dimen/dimen_24dp"
+        android:enabled="false"
+        android:fontFamily="sans-serif"
+        android:minWidth="125dp"
+        android:stateListAnimator="@animator/button_detail_state_list_anim"
+        android:text="@string/btn_stats"
+        android:textColor="@drawable/button_detail_text_color"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        app:backgroundTint="@drawable/button_detail_tint_color"
+        app:cornerRadius="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnEvolutions"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvOverview" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEvolutions"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:enabled="true"
+        android:fontFamily="sans-serif"
+        android:stateListAnimator="@animator/button_detail_state_list_anim"
+        android:text="@string/btn_evolutions"
+        android:textColor="@drawable/button_detail_text_color"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        app:backgroundTint="@drawable/button_detail_tint_color"
+        app:cornerRadius="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnStat"
+        app:layout_constraintTop_toTopOf="@+id/btnStat" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:barrierMargin="@dimen/dimen_20dp"
+        app:constraint_referenced_ids="btnStat,btnEvolutions" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDetails"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierButtons"
+        tools:itemCount="1"
+        tools:listitem="@layout/list_item_stat" />
+</androidx.constraintlayout.motion.widget.MotionLayout>

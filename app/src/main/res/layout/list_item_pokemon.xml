@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constrainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ripple_list_item"
+    android:transitionName="container_transform">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="@dimen/list_item_pokemon_image_size"
+        android:layout_height="@dimen/list_item_pokemon_image_size"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        android:scaleType="fitCenter"
+        android:transitionName="@string/transition_name_avatar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:textColor="@color/color_text_list_primary"
+        android:textSize="20sp"
+        android:transitionName="@string/transition_name_title"
+        app:layout_constraintBottom_toTopOf="@id/tvNumber"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
+        app:layout_constraintTop_toTopOf="@id/ivAvatar"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@tools:sample/full_names" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:maxLines="1"
+        android:textColor="#B3B1B1"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        tools:text="#001" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivType1"
+        android:layout_width="@dimen/type_element_size"
+        android:layout_height="@dimen/type_element_size"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:background="@color/color_type_fighting"
+        android:elevation="6dp"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        app:contentPadding="@dimen/dimen_8dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivAvatar"
+        app:shapeAppearanceOverlay="@style/ShapeableImageView.Circle"
+        tools:src="@drawable/ic_type_dragon"
+        tools:visibility="visible" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivType2"
+        android:layout_width="@dimen/type_element_size"
+        android:layout_height="@dimen/type_element_size"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:background="@color/color_type_water"
+        android:elevation="6dp"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        app:contentPadding="@dimen/dimen_8dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+        app:layout_constraintEnd_toStartOf="@id/ivType1"
+        app:layout_constraintTop_toTopOf="@id/ivAvatar"
+        app:shapeAppearanceOverlay="@style/ShapeableImageView.Circle"
+        tools:src="@drawable/ic_type_dark"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>

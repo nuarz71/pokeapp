@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">PokeApp</string>
+    <string name="title_home">Pokemon</string>
+    <string name="transition_name_avatar">avatar_transform</string>
+    <string name="transition_name_title">title_transform</string>
+    <string name="btn_stats">Stats</string>
+    <string name="btn_evolutions">Evolutions</string>
+    <string name="label_stat_hp">HP</string>
+    <string name="label_stat_zero">000</string>
+    <string name="label_stat_atk">ATK</string>
+    <string name="label_stat_def">DEF</string>
+    <string name="label_stat_satk">SATK</string>
+    <string name="label_stat_sdef">SDEF</string>
+    <string name="label_stat_spd">SPD</string>
+    <string name="subtitle_breeding_eeg_group">Eeg Group</string>
+    <string name="subtitle_breeding_hatch_time">Hatch Time</string>
+    <string name="subtitle_breeding_gender">Gender</string>
+    <string name="item_title_breeding">Breeding</string>
+    <string name="overview_hatch_time">%1$d Steps\n%2$d Cycles</string>
+    <string name="overview_gender"><![CDATA[<font color="#D3425F">%1$s</font><br /><font color="#0C69C8">%2$s</font>]]></string>
+    <string name="content_title_capture">Capture</string>
+    <string name="subtitle_capture_generation">Generation</string>
+    <string name="subtitle_capture_habitat">Habitat</string>
+    <string name="subtitle_capture_rate">Capture Rate</string>
+    <string name="subtitle_sprites_normal">Normal</string>
+    <string name="subtitle_sprite_shiny">Shiny</string>
+    <string name="item_title_sprites">Sprites</string>
+    <string name="item_title_abilities">Abilities</string>
+    <string name="label_connection_trouble">Connection Trouble</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="color_type_bug">#92BC2C</color>
+    <color name="color_type_dark">#595761</color>
+    <color name="color_type_dragon">#0C69C8</color>
+    <color name="color_type_electric">#F2D94E</color>
+    <color name="color_type_fairy">#EE90E6</color>
+    <color name="color_type_fighting">#D3425F</color>
+    <color name="color_type_fire">#FBA54C</color>
+    <color name="color_type_flying">#A1BBEC</color>
+    <color name="color_type_ghost">#5F6DBC</color>
+    <color name="color_type_grass">#5FBD58</color>
+    <color name="color_type_ground">#DA7C4D</color>
+    <color name="color_type_ice">#75D0C1</color>
+    <color name="color_type_normal">#A0A29F</color>
+    <color name="color_type_poison">#B763CF</color>
+    <color name="color_type_physic">#FA8581</color>
+    <color name="color_type_rock">#C9BB8A</color>
+    <color name="color_type_steal">#5695A3</color>
+    <color name="color_type_water">#539DDF</color>
+
+    <color name="color_text_list_primary">#4A4646</color>
+    <color name="color_progress_track">#F3F3F3</color>
+</resources>
