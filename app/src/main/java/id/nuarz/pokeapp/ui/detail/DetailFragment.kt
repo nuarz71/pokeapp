@@ -129,29 +129,45 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                 detailAdapter.loading()
             }
             is State.DetailStatState.Failed -> {
-                Snackbar.make(
-                    requireContext(),
-                    binding.root,
-                    it.message ?: "Unknown Error",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                if(detailAdapter.itemCount <= 1){
+                    detailAdapter.update(listOf())
+                }
+                showSnackBar(it.message ?: "Unknown Error")
             }
             is State.DetailStatState.Loaded -> updateUi(it.overview, it)
             is State.EvolutionState.Loading -> {
                 detailAdapter.loading()
             }
             is State.EvolutionState.Failed -> {
-                Snackbar.make(
-                    requireContext(),
-                    binding.root,
-                    it.message ?: "Unknown Error",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                if(detailAdapter.itemCount <= 1){
+                    detailAdapter.update(listOf())
+                }
+                showSnackBar(it.message ?: "Unknown Error")
             }
             is State.EvolutionState.Loaded -> detailAdapter.update(it.list)
             is State.ConnectionFailed -> {
                 detailAdapter.connectionError()
             }
+        }
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(
+            requireContext(),
+            binding.root,
+            message,
+            Snackbar.LENGTH_LONG
+        ).apply {
+            setAction("Retry") {
+                val event = if (binding.btnEvolutions.isEnabled) {
+                    Event.RetryEvolution
+                } else {
+                    Event.RetryStat
+                }
+                viewModel.onEvent(event)
+                dismiss()
+            }
+            show()
         }
     }
 

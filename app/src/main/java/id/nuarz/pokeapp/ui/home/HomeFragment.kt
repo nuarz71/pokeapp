@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import id.nuarz.pokeapp.R
 import id.nuarz.pokeapp.core.ext.observe
 import id.nuarz.pokeapp.core.ext.toast
 import id.nuarz.pokeapp.databinding.FragmentHomeBinding
@@ -44,14 +45,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             when (it) {
                 State.Loading -> adapter.loading()
                 is State.Loaded -> adapter.updateList(it.items)
-                is State.Failed -> Snackbar.make(
-                    requireContext(),
-                    binding.root,
-                    it.message ?: "Unknown Error",
-                    Snackbar.LENGTH_LONG
-                ).show()
-                State.ConnectionError -> adapter.connectionError()
+                is State.Failed -> {
+                    if (adapter.itemCount <= 1) {
+                        adapter.updateList(listOf())
+                    }
+                    showSnackBar(it.message ?: "Unknown error")
+                }
+                State.ConnectionError -> {
+                    adapter.connectionError()
+                    showSnackBar(getString(R.string.label_connection_trouble))
+                }
             }
+        }
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(
+            requireContext(),
+            binding.root,
+            message,
+            Snackbar.LENGTH_LONG
+        ).apply {
+            setAction("Retry") {
+                viewModel.onEvent(Event.RetryClick)
+                dismiss()
+            }
+            show()
         }
     }
 

@@ -4,6 +4,8 @@ sealed class Event {
     data class OnViewCreated(val id: Int) : Event()
     object StatClick : Event()
     object EvolutionClick : Event()
+    object RetryStat : Event()
+    object RetryEvolution : Event()
 }
 
 sealed class State {

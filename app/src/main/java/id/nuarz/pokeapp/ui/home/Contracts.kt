@@ -2,6 +2,7 @@ package id.nuarz.pokeapp.ui.home
 
 sealed class Event {
     object OnViewCreate : Event()
+    object RetryClick : Event()
 }
 
 sealed class State {
