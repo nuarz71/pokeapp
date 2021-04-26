@@ -18,12 +18,11 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import id.nuarz.pokeapp.R
+import id.nuarz.pokeapp.core.BaseFragment
 import id.nuarz.pokeapp.core.ext.alphaColor
 import id.nuarz.pokeapp.core.ext.observe
-import id.nuarz.pokeapp.core.ext.toast
 import id.nuarz.pokeapp.databinding.FragmentDetailBinding
 import id.nuarz.pokeapp.ui.detail.adapter.DetailAdapter
-import id.nuarz.pokeapp.core.BaseFragment
 import javax.inject.Inject
 
 @AndroidEntryPoint
