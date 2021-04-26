@@ -17,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import id.nuarz.pokeapp.R
 import id.nuarz.pokeapp.core.ext.alphaColor
 import id.nuarz.pokeapp.core.ext.observe
 import id.nuarz.pokeapp.core.ext.toast
@@ -125,9 +126,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
 
     private fun bindViewModel() = observe(viewModel.state) {
         when (it) {
-            State.DetailStatState.Loading -> {
-                detailAdapter.loading()
-            }
+            State.DetailStatState.Loading -> detailAdapter.loading()
             is State.DetailStatState.Failed -> {
                 if(detailAdapter.itemCount <= 1){
                     detailAdapter.update(listOf())
@@ -135,9 +134,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                 showSnackBar(it.message ?: "Unknown Error")
             }
             is State.DetailStatState.Loaded -> updateUi(it.overview, it)
-            is State.EvolutionState.Loading -> {
-                detailAdapter.loading()
-            }
+            is State.EvolutionState.Loading -> detailAdapter.loading()
             is State.EvolutionState.Failed -> {
                 if(detailAdapter.itemCount <= 1){
                     detailAdapter.update(listOf())
@@ -147,6 +144,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
             is State.EvolutionState.Loaded -> detailAdapter.update(it.list)
             is State.ConnectionFailed -> {
                 detailAdapter.connectionError()
+                showSnackBar(getString(R.string.label_connection_trouble))
             }
         }
     }

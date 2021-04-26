@@ -266,33 +266,37 @@ class RepositoryImpl @Inject constructor(
             var evolve: Evolve = chain.chain
             var find = true
             do {
-                val evolutionDetails = evolve.evolvesTo[0].evolutionDetails[0]
-                val evolutionTrigger = when (evolutionDetails.trigger.name) {
-                    "level-up" -> {
-                        when {
-                            evolutionDetails.minLevel != null -> "Lv. ${evolutionDetails.minLevel}"
-                            evolutionDetails.minHappiness != null -> "Lv. Up & Happy ${evolutionDetails.minHappiness}"
-                            evolutionDetails.minBeauty != null -> "Lv. Up & Beauty ${evolutionDetails.minBeauty}"
-                            evolutionDetails.minAffection != null -> "Lv. Up & Affect ${evolutionDetails.minAffection}"
-                            else -> "Level Up"
+                try {
+                    val evolutionDetails = evolve.evolvesTo[0].evolutionDetails[0]
+                    val evolutionTrigger = when (evolutionDetails.trigger.name) {
+                        "level-up" -> {
+                            when {
+                                evolutionDetails.minLevel != null -> "Lv. ${evolutionDetails.minLevel}"
+                                evolutionDetails.minHappiness != null -> "Lv. Up & Happy ${evolutionDetails.minHappiness}"
+                                evolutionDetails.minBeauty != null -> "Lv. Up & Beauty ${evolutionDetails.minBeauty}"
+                                evolutionDetails.minAffection != null -> "Lv. Up & Affect ${evolutionDetails.minAffection}"
+                                else -> "Level Up"
+                            }
                         }
+                        "use-item" -> evolutionDetails.item?.name ?: "Use Item"
+                        else -> "Level Up"
                     }
-                    "use-item" -> evolutionDetails.item?.name ?: "Use Item"
-                    else -> "Level Up"
-                }
-                list.add(
-                    EvolutionResult(
-                        evolve.species.name.capitalize(Locale.getDefault()),
-                        evolve.species.url.urlLastToId(),
-                        evolve.evolvesTo[0].species.name.capitalize(Locale.getDefault()),
-                        evolve.evolvesTo[0].species.url.urlLastToId(),
-                        evolutionTrigger
+                    list.add(
+                        EvolutionResult(
+                            evolve.species.name.capitalize(Locale.getDefault()),
+                            evolve.species.url.urlLastToId(),
+                            evolve.evolvesTo[0].species.name.capitalize(Locale.getDefault()),
+                            evolve.evolvesTo[0].species.url.urlLastToId(),
+                            evolutionTrigger
+                        )
                     )
-                )
-                if (evolve.evolvesTo[0].evolvesTo.isEmpty()) {
+                    if (evolve.evolvesTo[0].evolvesTo.isEmpty()) {
+                        find = false
+                    } else {
+                        evolve = evolve.evolvesTo[0]
+                    }
+                } catch (e: Throwable) {
                     find = false
-                } else {
-                    evolve = evolve.evolvesTo[0]
                 }
             } while (find)
 
