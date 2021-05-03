@@ -3,6 +3,7 @@ package id.nuarz.pokeapp.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.imageview.ShapeableImageView
 import id.nuarz.pokeapp.R
 import id.nuarz.pokeapp.core.BaseViewHolder
 import id.nuarz.pokeapp.databinding.ListItemConnectionErrorBinding
@@ -35,6 +37,11 @@ class ListPokemonAdapter(private val onClick: (PokemonItemModel, Navigator.Extra
     fun updateList(data: List<HomeUiModel>) {
         items.clear()
         items.addAll(data)
+        notifyDataSetChanged()
+    }
+
+    fun clear() {
+        items.clear()
         notifyDataSetChanged()
     }
 
@@ -115,44 +122,28 @@ class ListPokemonAdapter(private val onClick: (PokemonItemModel, Navigator.Extra
                 .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(binding.ivAvatar)
 
-            when {
-                model.elements.isNotEmpty() && model.elements.size > 1 -> {
-                    binding.ivType2.visibility = View.VISIBLE
-                    binding.ivType1.visibility = View.VISIBLE
+            updateElementView(model.elements)
+        }
 
-                    val icon1 = model.elements[0].iconResId
-                    val color1 = ContextCompat.getColor(
+        private fun updateElementView(elements: List<ElementItemModel>) {
+            if (elements.isEmpty()) return
+            binding.llElements.removeAllViews()
+            elements.forEach { type ->
+                binding.llElements.post {
+                    val child = LayoutInflater.from(context).inflate(
+                        R.layout.item_element_image,
+                        binding.llElements,
+                        false
+                    ) as ShapeableImageView
+                    val id = View.generateViewId()
+                    child.id = id
+                    val color = ContextCompat.getColor(
                         itemView.context,
-                        model.elements[0].colorResId
+                        type.colorResId
                     )
-
-                    binding.ivType1.setImageResource(icon1)
-                    binding.ivType1.setBackgroundColor(color1)
-
-                    val icon2 = model.elements[1].iconResId
-                    val color2 = ContextCompat.getColor(
-                        itemView.context,
-                        model.elements[1].colorResId
-                    )
-                    binding.ivType2.setImageResource(icon2)
-                    binding.ivType2.setBackgroundColor(color2)
-                }
-
-                model.elements.isNotEmpty() -> {
-                    binding.ivType2.visibility = View.GONE
-                    binding.ivType1.visibility = View.VISIBLE
-
-                    val icon1 = model.elements[0].iconResId
-                    val color1 = ContextCompat.getColor(
-                        itemView.context,
-                        model.elements[0].colorResId
-                    )
-                    binding.ivType1.setImageResource(icon1)
-                    binding.ivType1.setBackgroundColor(color1)
-                }
-                else -> {
-                    binding.ivType2.visibility = View.GONE
-                    binding.ivType1.visibility = View.GONE
+                    child.setImageResource(type.iconResId)
+                    child.setBackgroundColor(color)
+                    binding.llElements.addView(child)
                 }
             }
         }

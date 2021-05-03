@@ -52,37 +52,13 @@
         app:layout_constraintTop_toBottomOf="@id/tvName"
         tools:text="#001" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivType1"
-        android:layout_width="@dimen/type_element_size"
-        android:layout_height="@dimen/type_element_size"
-        android:layout_marginEnd="@dimen/dimen_16dp"
-        android:background="@color/color_type_fighting"
-        android:elevation="6dp"
-        android:scaleType="centerInside"
-        android:visibility="gone"
-        app:contentPadding="@dimen/dimen_8dp"
+    <LinearLayout
+        android:id="@+id/llElements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_8dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivAvatar"
-        app:shapeAppearanceOverlay="@style/ShapeableImageView.Circle"
-        tools:src="@drawable/ic_type_dragon"
-        tools:visibility="visible" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivType2"
-        android:layout_width="@dimen/type_element_size"
-        android:layout_height="@dimen/type_element_size"
-        android:layout_marginEnd="@dimen/dimen_16dp"
-        android:background="@color/color_type_water"
-        android:elevation="6dp"
-        android:scaleType="centerInside"
-        android:visibility="gone"
-        app:contentPadding="@dimen/dimen_8dp"
-        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
-        app:layout_constraintEnd_toStartOf="@id/ivType1"
-        app:layout_constraintTop_toTopOf="@id/ivAvatar"
-        app:shapeAppearanceOverlay="@style/ShapeableImageView.Circle"
-        tools:src="@drawable/ic_type_dark"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toTopOf="@id/ivAvatar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

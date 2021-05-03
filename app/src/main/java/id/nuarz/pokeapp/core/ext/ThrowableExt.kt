@@ -6,11 +6,14 @@ import java.io.IOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
-fun Throwable.handleError(): ErrorResult {
-    return when (this) {
-        is SocketTimeoutException -> ErrorResult.Failed("Timeout")
-        is IOException, is ConnectException -> ErrorResult.Connection
-        is HttpException -> ErrorResult.Failed("Something wrong")
-        else -> ErrorResult.Failed(message)
+suspend fun Throwable.handleError(
+    connection:suspend (ErrorResult.Connection) -> Unit,
+    error: suspend (ErrorResult.Failed) -> Unit
+) {
+    when (this) {
+        is SocketTimeoutException -> error(ErrorResult.Failed("Timeout"))
+        is IOException, is ConnectException -> connection(ErrorResult.Connection)
+        is HttpException -> error(ErrorResult.Failed("Something wrong"))
+        else -> error(ErrorResult.Failed(message))
     }
 }

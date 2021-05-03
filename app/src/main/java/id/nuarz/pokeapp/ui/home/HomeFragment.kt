@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 is State.Loaded -> adapter.updateList(it.items)
                 is State.Failed -> {
                     if (adapter.itemCount <= 1) {
-                        adapter.updateList(listOf())
+                        adapter.clear()
                     }
                     showSnackBar(it.message ?: "Unknown error")
                 }

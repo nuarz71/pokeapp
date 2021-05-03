@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.imageview.ShapeableImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/type_element_size"
+    android:layout_height="@dimen/type_element_size"
+    android:layout_margin="@dimen/dimen_8dp"
+    android:background="@color/color_type_water"
+    android:elevation="2dp"
+    android:scaleType="centerInside"
+    android:translationZ="4dp"
+    app:contentPadding="@dimen/dimen_8dp"
+    app:shapeAppearanceOverlay="@style/ShapeableImageView.Circle"
+    tools:src="@drawable/ic_type_dark"
+    tools:viewBindingIgnore="true">
+
+</com.google.android.material.imageview.ShapeableImageView>

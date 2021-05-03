@@ -5,9 +5,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import id.nuarz.pokeapp.core.BaseViewModel
 import id.nuarz.pokeapp.core.ext.handleError
 import id.nuarz.pokeapp.data.Repository
-import id.nuarz.pokeapp.data.resultmodel.ErrorResult
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,11 +28,23 @@ class HomeViewModel @Inject constructor(
     private fun requestPokemon() {
         pushState(State.Loading)
         viewModelScope.launch(Dispatchers.IO) {
-            try {
-                repository.listPokemon(0).collectLatest { result ->
+            repository.listPokemon(0)
+                .catch { e ->
+                    e.handleError({
+                        withContext(Dispatchers.Main) {
+                            pushState(State.ConnectionError)
+                        }
+                    }) {
+                        withContext(Dispatchers.Main) {
+                            pushState(State.Failed(it.message))
+                        }
+                    }
+                }
+                .collectLatest { result ->
                     val item = result.map {
                         val number = String.format("#%03d", it.id)
-                        val imageUrl = "https://pokeres.bastionbot.org/images/pokemon/${it.id}.png"
+                        val imageUrl =
+                            "https://pokeres.bastionbot.org/images/pokemon/${it.id}.png"
                         PokemonItemModel(
                             it.id,
                             it.displayName,
@@ -48,17 +63,6 @@ class HomeViewModel @Inject constructor(
                         pushState(State.Loaded(item))
                     }
                 }
-            } catch (e: Throwable) {
-                when (val failed = e.handleError()) {
-                    is ErrorResult.Connection -> withContext(Dispatchers.Main) {
-                        pushState(State.ConnectionError)
-                    }
-                    is ErrorResult.Failed -> withContext(Dispatchers.Main) {
-                        pushState(State.Failed(failed.message))
-                    }
-                }
-            }
-
         }
     }
 

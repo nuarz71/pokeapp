@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -15,6 +16,8 @@ import androidx.transition.TransitionInflater
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import id.nuarz.pokeapp.R
@@ -63,10 +66,27 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
 
         binding.tvTitle.text = args.pokemonItemModel.name
 
-
-        binding.btnElement1.text = args.pokemonItemModel.elements[0].name
-        binding.btnElement1.setIconResource(args.pokemonItemModel.elements[0].iconResId)
-        binding.btnElement1.backgroundTintList = ColorStateList.valueOf(firstColor)
+        if (args.pokemonItemModel.elements.isEmpty()) return
+        binding.llElements.removeAllViews()
+        args.pokemonItemModel.elements.forEach { type ->
+            binding.llElements.post {
+                val child = LayoutInflater.from(requireContext()).inflate(
+                    R.layout.button_item_detail_element,
+                    binding.llElements,
+                    false
+                ) as MaterialButton
+                val id = View.generateViewId()
+                child.id = id
+                val color = ContextCompat.getColor(
+                    requireContext(),
+                    type.colorResId
+                )
+                child.setIconResource(type.iconResId)
+                child.text = type.name
+                child.backgroundTintList = ColorStateList.valueOf(color)
+                binding.llElements.addView(child)
+            }
+        }
         (binding.constrainLayout.background as GradientDrawable).also {
             it.colors = intArrayOf(secondColor, firstColor)
         }
@@ -127,20 +147,26 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
         when (it) {
             State.DetailStatState.Loading -> detailAdapter.loading()
             is State.DetailStatState.Failed -> {
-                if(detailAdapter.itemCount <= 1){
-                    detailAdapter.update(listOf())
+                if (detailAdapter.itemCount <= 1) {
+                    detailAdapter.clear()
                 }
                 showSnackBar(it.message ?: "Unknown Error")
             }
-            is State.DetailStatState.Loaded -> updateUi(it.overview, it)
+            is State.DetailStatState.Loaded -> {
+                if (!binding.btnStat.isEnabled)
+                    updateUi(it.overview, it)
+            }
             is State.EvolutionState.Loading -> detailAdapter.loading()
             is State.EvolutionState.Failed -> {
-                if(detailAdapter.itemCount <= 1){
-                    detailAdapter.update(listOf())
+                if (detailAdapter.itemCount <= 1) {
+                    detailAdapter.clear()
                 }
                 showSnackBar(it.message ?: "Unknown Error")
             }
-            is State.EvolutionState.Loaded -> detailAdapter.update(it.list)
+            is State.EvolutionState.Loaded -> {
+                if (!binding.btnEvolutions.isEnabled)
+                    detailAdapter.update(it.list)
+            }
             is State.ConnectionFailed -> {
                 detailAdapter.connectionError()
                 showSnackBar(getString(R.string.label_connection_trouble))

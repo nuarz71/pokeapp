@@ -31,6 +31,11 @@ class DetailAdapter(
         notifyDataSetChanged()
     }
 
+    fun clear(){
+        items.clear()
+        notifyDataSetChanged()
+    }
+
     fun loading() {
         items.clear()
         items.add(LoadingItemModel)
