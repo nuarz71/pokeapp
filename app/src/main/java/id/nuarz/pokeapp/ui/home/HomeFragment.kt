@@ -9,10 +9,9 @@ import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import id.nuarz.pokeapp.R
-import id.nuarz.pokeapp.core.ext.observe
-import id.nuarz.pokeapp.core.ext.toast
-import id.nuarz.pokeapp.databinding.FragmentHomeBinding
 import id.nuarz.pokeapp.core.BaseFragment
+import id.nuarz.pokeapp.core.ext.observe
+import id.nuarz.pokeapp.databinding.FragmentHomeBinding
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
