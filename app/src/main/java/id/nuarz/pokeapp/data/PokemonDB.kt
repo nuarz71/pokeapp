@@ -1,10 +1,9 @@
-package id.nuarz.pokeapp
+package id.nuarz.pokeapp.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import id.nuarz.pokeapp.data.PokemonDao
 import id.nuarz.pokeapp.data.entity.*
 
 @Database(

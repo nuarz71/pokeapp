@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import id.nuarz.pokeapp.PokemonDB
+import id.nuarz.pokeapp.data.PokemonDB
 
 @Module
 @InstallIn(SingletonComponent::class)

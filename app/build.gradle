@@ -64,7 +64,6 @@ dependencies {
     implementation deps.lifecycle.liveData
 
     implementation deps.glide.glide
-    kapt deps.glide.compiler
 
     implementation deps.room.runtime
     implementation deps.room.ktx

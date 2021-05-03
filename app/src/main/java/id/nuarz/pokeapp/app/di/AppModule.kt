@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import id.nuarz.pokeapp.PokemonDB
+import id.nuarz.pokeapp.data.PokemonDB
 import id.nuarz.pokeapp.R
 import id.nuarz.pokeapp.data.PokemonService
 import id.nuarz.pokeapp.data.Repository
